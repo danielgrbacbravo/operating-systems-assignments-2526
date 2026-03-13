@@ -1,0 +1,9 @@
+ Image      : imgs/6.img
+ Volume     : BIGDISK
+ FS type    : FAT16
+ Bytes/sec  : 512
+ Sec/cluster: 4  (2048 bytes/cluster)
+ FATs       : 2  (128 sectors each)
+ Root cap   : 512 entries
+ Total sec  : 131072
+ Clusters   : 32695

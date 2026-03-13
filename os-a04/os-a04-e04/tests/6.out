@@ -1,0 +1,17 @@
+=== CLOCK ===
+Frames: 3, Processes: 3
+P1 1 R: FAULT  P1:1, -, -
+P2 2 R: FAULT  P1:1, P2:2, -
+P3 3 R: FAULT  P1:1, P2:2, P3:3
+P1 4 R: FAULT  P1:4, P2:2, P3:3
+P2 2 R: HIT    P1:4, P2:2, P3:3
+P3 5 W: FAULT  P1:4, P2:2, P3:5
+P1 1 R: FAULT  P1:4, P1:1, P3:5
+P2 6 R: FAULT  P2:6, P1:1, P3:5
+P3 3 R: FAULT  P2:6, P3:3, P3:5
+P1 7 W: FAULT  P1:7, P3:3, P3:5
+P2 2 R: FAULT  P1:7, P2:2, P3:5
+P3 1 R: FAULT  P1:7, P2:2, P3:1
+Page faults: 11 (P1: 4, P2: 3, P3: 4)
+Writes to swap: 1
+Optimal faults: 9

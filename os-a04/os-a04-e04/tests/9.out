@@ -1,0 +1,25 @@
+=== CLOCK ===
+Frames: 6, Processes: 1
+P1 1 R: FAULT  P1:1, -, -, -, -, -
+P1 2 R: FAULT  P1:1, P1:2, -, -, -, -
+P1 3 R: FAULT  P1:1, P1:2, P1:3, -, -, -
+P1 4 R: FAULT  P1:1, P1:2, P1:3, P1:4, -, -
+P1 5 R: FAULT  P1:1, P1:2, P1:3, P1:4, P1:5, -
+P1 6 R: FAULT  P1:1, P1:2, P1:3, P1:4, P1:5, P1:6
+P1 7 R: FAULT  P1:7, P1:2, P1:3, P1:4, P1:5, P1:6
+P1 1 R: FAULT  P1:7, P1:1, P1:3, P1:4, P1:5, P1:6
+P1 2 R: FAULT  P1:7, P1:1, P1:2, P1:4, P1:5, P1:6
+P1 3 R: FAULT  P1:7, P1:1, P1:2, P1:3, P1:5, P1:6
+P1 4 R: FAULT  P1:7, P1:1, P1:2, P1:3, P1:4, P1:6
+P1 5 R: FAULT  P1:7, P1:1, P1:2, P1:3, P1:4, P1:5
+P1 6 R: FAULT  P1:6, P1:1, P1:2, P1:3, P1:4, P1:5
+P1 7 R: FAULT  P1:6, P1:7, P1:2, P1:3, P1:4, P1:5
+P1 1 R: FAULT  P1:6, P1:7, P1:1, P1:3, P1:4, P1:5
+P1 2 R: FAULT  P1:6, P1:7, P1:1, P1:2, P1:4, P1:5
+P1 3 R: FAULT  P1:6, P1:7, P1:1, P1:2, P1:3, P1:5
+P1 4 R: FAULT  P1:6, P1:7, P1:1, P1:2, P1:3, P1:4
+P1 5 R: FAULT  P1:5, P1:7, P1:1, P1:2, P1:3, P1:4
+P1 6 R: FAULT  P1:5, P1:6, P1:1, P1:2, P1:3, P1:4
+Page faults: 20 (P1: 20)
+Writes to swap: 0
+Optimal faults: 9

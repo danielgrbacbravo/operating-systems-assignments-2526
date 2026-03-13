@@ -1,0 +1,15 @@
+=== MRU ===
+Frames: 3, Processes: 1
+P1 7 R: FAULT  P1:7, -, -
+P1 0 R: FAULT  P1:7, P1:0, -
+P1 1 R: FAULT  P1:7, P1:0, P1:1
+P1 2 R: FAULT  P1:7, P1:0, P1:2
+P1 0 R: HIT    P1:7, P1:0, P1:2
+P1 3 R: FAULT  P1:7, P1:3, P1:2
+P1 0 R: FAULT  P1:7, P1:0, P1:2
+P1 4 R: FAULT  P1:7, P1:4, P1:2
+P1 2 R: HIT    P1:7, P1:4, P1:2
+P1 3 R: FAULT  P1:7, P1:4, P1:3
+Page faults: 8 (P1: 8)
+Writes to swap: 0
+Optimal faults: 6

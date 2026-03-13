@@ -1,0 +1,9 @@
+ Image      : imgs/5.img
+ Volume     : HELLO
+ FS type    : FAT16
+ Bytes/sec  : 512
+ Sec/cluster: 4  (2048 bytes/cluster)
+ FATs       : 2  (32 sectors each)
+ Root cap   : 512 entries
+ Total sec  : 32768
+ Clusters   : 8167
