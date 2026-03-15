@@ -14,17 +14,21 @@ Optimize for **clarity and correctness**, not cleverness or optimization.
 
 Always:
 
-- Compile with the same flags as the grader:
+- Compile with the same flags as the grader: 
 
   ```sh
-  gcc -O2 -std=c99 -pedantic -Wall -o a.out *.c -lm
+  gcc -g -std=c99 -pedantic -Wall -o a.out *.c -lm
   ```
+
+Note: the grader uses the '-O2' flag however use '-g' 
 
 - Run programs via `orb` so behavior matches Linux:
 
   ```sh
   orb ./a.out
   ```
+
+Note: orb requires elevated permissions, make to request higher privilege for executing orb commands
 
 - Use Themis to fetch tests (on macOS, **not** via `orb`).
 - Compare output with `diff -u` against `tests/*.out`.
@@ -92,8 +96,11 @@ Examples:
 # Compile
 orb gcc -O2 -std=c99 -pedantic -Wall -o a.out *.c -lm
 
-# Run one test manually
+# Run one test manually (stdin)
 orb sh -c './a.out < tests/1.in'
+
+# Run one test manually (argv)
+orb sh -c './a.out tests/1.in'
 ```
 
 Do **not** use `orb` for `themis`.
@@ -128,6 +135,9 @@ themis list \
   --discover-depth 8 \
   --json
 ```
+
+
+Note: `themis` accesses the internet which requires elevated permissions, make to request higher privilege for executing `themis` commands
 
 ### Listing and Fetching Tests
 
