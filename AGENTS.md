@@ -39,7 +39,7 @@ Never:
 
 ## C Style
 
-### Variable naming
+### Variable Naming
 
 - Use **descriptive English snake_case** names.
 - Make each name self-explanatory.
@@ -51,7 +51,7 @@ Examples:
 - `number_of_students` instead of `n`.
 - `is_input_valid` instead of `ok`.
 
-### Implementation style
+### Implementation Style
 
 - Prefer the **simplest correct solution**.
 - Keep control flow direct and explicit.
@@ -108,7 +108,7 @@ THEMIS_REPO_BASE_URL=https://themis.housing.rug.nl/course/2025-2026/os/
 
 Update this if the repository targets a different Themis course.
 
-### Discovering assignments (optional)
+### Discovering Assignments (Optional)
 
 Use Themis on macOS, not via `orb`:
 
@@ -129,7 +129,7 @@ themis list \
   --json
 ```
 
-### Listing and fetching tests
+### Listing and Fetching Tests
 
 List available tests:
 
@@ -170,7 +170,7 @@ Two-step variant:
 orb sh -c './a.out < tests/1.in > actual.out && diff -u tests/1.out actual.out'
 ```
 
-### Recommended test loop
+### Recommended Test Loop
 
 Run all numbered tests:
 

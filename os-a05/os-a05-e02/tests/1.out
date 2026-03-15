@@ -1,0 +1,17 @@
+ Image      : 1.img
+ Volume     : TESTDISK
+ FS type    : FAT16
+ Bytes/sec  : 512
+ Sec/cluster: 4  (2048 bytes/cluster)
+ FATs       : 2  (32 sectors each)
+ Root cap   : 512 entries
+ Total sec  : 32768
+ Clusters   : 8167
+
+/
+|-- [----a] HELLO.TXT  size=17          (2026-03-11 16:42:14)
+|-- [----a] README.MD  size=67          (2026-03-11 16:42:14)
+|-- [----a] BIG.TXT  size=5000        (2026-03-11 16:42:14)
+\-- [d----] SUBDIR/  (2026-03-11 16:42:14)
+
+Total: 3 file(s),  5084 byte(s)

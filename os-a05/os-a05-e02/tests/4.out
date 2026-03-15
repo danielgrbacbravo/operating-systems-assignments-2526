@@ -1,0 +1,17 @@
+ Image      : 4.img
+ Volume     : VOLLABEL
+ FS type    : FAT16
+ Bytes/sec  : 512
+ Sec/cluster: 4  (2048 bytes/cluster)
+ FATs       : 2  (32 sectors each)
+ Root cap   : 512 entries
+ Total sec  : 32768
+ Clusters   : 8167
+
+/
+|-- [----a] DATA.BIN  size=100         (2026-03-11 16:42:14)
+|-- [----a] LOG.TXT  size=47          (2026-03-11 16:42:14)
+|-- [----a] NOTES.TXT  size=27          (2026-03-11 16:42:14)
+\-- [----a] SYS.COM  size=9           (2026-03-11 16:42:14)
+
+Total: 4 file(s),  183 byte(s)

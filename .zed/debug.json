@@ -1,0 +1,24 @@
+[
+  {
+    "label": "debug a05 (1.img)",
+    "adapter": "CodeLLDB",
+    "request": "launch",
+    "build": {
+      "command": "sh",
+      "args": [
+        "-c",
+        "cd \"$ZED_DIRNAME\" && gcc -g -std=c99 -Wall -pedantic *.c -o a.out -lm"
+      ]
+    },
+    "program": "$ZED_DIRNAME/a.out",
+    "args": [
+      "$ZED_DIRNAME/imgs/1.img"
+    ],
+    "cwd": "$ZED_DIRNAME",
+    "stdio": [
+      null,
+      null,
+      null
+    ]
+  }
+]

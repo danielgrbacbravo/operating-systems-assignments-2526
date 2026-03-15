@@ -1,0 +1,18 @@
+ Image      : 5.img
+ Volume     : FIVEFILES
+ FS type    : FAT16
+ Bytes/sec  : 512
+ Sec/cluster: 4  (2048 bytes/cluster)
+ FATs       : 2  (32 sectors each)
+ Root cap   : 512 entries
+ Total sec  : 32768
+ Clusters   : 8167
+
+/
+|-- [----a] A.TXT  size=5           (2026-03-11 16:42:14)
+|-- [----a] B.TXT  size=10          (2026-03-11 16:42:14)
+|-- [----a] C.TXT  size=15          (2026-03-11 16:42:14)
+|-- [----a] D.TXT  size=20          (2026-03-11 16:42:14)
+\-- [----a] E.TXT  size=25          (2026-03-11 16:42:14)
+
+Total: 5 file(s),  75 byte(s)
