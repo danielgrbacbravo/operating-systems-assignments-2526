@@ -14,13 +14,13 @@ Optimize for **clarity and correctness**, not cleverness or optimization.
 
 Always:
 
-- Compile with the same flags as the grader: 
+- Compile with the same flags as the grader:
 
   ```sh
   gcc -g -std=c99 -pedantic -Wall -o a.out *.c -lm
   ```
 
-Note: the grader uses the '-O2' flag however use '-g' 
+Note: the grader uses the `-O2` flag; however use `-g`.
 
 - Run programs via `orb` so behavior matches Linux:
 
@@ -28,9 +28,9 @@ Note: the grader uses the '-O2' flag however use '-g'
   orb ./a.out
   ```
 
-Note: orb requires elevated permissions, make to request higher privilege for executing orb commands
+Note: `orb` requires elevated permissions, make sure to request higher privilege for executing `orb` commands.
 
-- Use Themis to fetch tests (on macOS, **not** via `orb`).
+- Use Themis to fetch tests/files (on macOS, **not** via `orb`).
 - Compare output with `diff -u` against `tests/*.out`.
 - Prefer small, explicit, readable fixes over refactors.
 
@@ -136,10 +136,9 @@ themis list \
   --json
 ```
 
+Note: `themis` accesses the internet which requires elevated permissions, make sure to request higher privilege for executing `themis` commands.
 
-Note: `themis` accesses the internet which requires elevated permissions, make to request higher privilege for executing `themis` commands
-
-### Listing and Fetching Tests
+### Listing and Fetching Tests/Files
 
 List available tests:
 
@@ -149,7 +148,19 @@ themis list \
   --start 1 --max 200 --max-misses 5
 ```
 
-Fetch tests into `tests/` (default output is `./tests`):
+Recommended default fetch (downloads both test cases and assignment files):
+
+```sh
+themis fetch \
+  --url "https://themis.housing.rug.nl/course/2025-2026/os/lab5/2_root_listing"
+```
+
+This downloads:
+- test cases into `./tests` by default
+- assignment files into current working directory by default
+- use `--out <dir>` to override output directory
+
+Tests-only fetch (legacy/explicit):
 
 ```sh
 themis fetch \
@@ -208,7 +219,8 @@ When modifying or generating code in this repo:
 
 - Compile with the grader’s `gcc` flags.
 - Run C code via `orb` so behavior matches Linux.
-- Fetch tests with `themis` on macOS, never via `orb`.
+- Fetch tests/files with `themis` on macOS, never via `orb`.
+- Prefer `themis fetch --url <assignment-or-course-url>` to get both tests and assignment files.
 - Validate against files in `tests/` using `diff -u`.
 - Ensure output matches expected `.out` **exactly**.
 - Prefer minimal, explicit changes over large refactors.
