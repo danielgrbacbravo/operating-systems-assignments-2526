@@ -1,0 +1,186 @@
+%%%%
+\documentclass[10pt,answers]{exam}
+\usepackage{times}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{booktabs}
+
+% Code listing style
+\lstdefinestyle{codestyle}{
+    language=C,
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{gray!10},
+    keywordstyle=\bfseries\color{blue!70!black},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{purple!80!black},
+    tabsize=4,
+    keepspaces=true,
+    showstringspaces=false,
+    frame=lines,
+    breaklines=true,
+}
+
+%Feel free to add packages and newcommands here if you wish
+
+%%%%
+% IMPORTANT: YOU MUST FILL IN THE FOLLOWING THREE COMMANDS WITH YOUR OWN DETAILS
+\newcommand{\authorname}{Daniel Grbac Bravo}       %%% Write your first and last name
+\newcommand{\authornumber}{s5482585}      %%% Write your student number
+\newcommand{\assignmentnumber}{5}        %%% Do not change
+%%%%
+
+%%%% DO NOT MODIFY
+
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader{Operating Systems (2025--2026)}{{\textbf{Assignment~\assignmentnumber} -- Theoretical} \\ \today}{}
+\runningheader{Individual solutions by \authorname~(\authornumber)}
+              {}
+              {Page \thepage\ of \numpages}
+\firstpagefooter{}{}{}
+\runningfooter{}{}{}
+\newcommand{\qpoints}[1]{\hfill \textbf{(#1 points)}}
+
+\begin{document}
+ \boxedpoints
+\begin{center}
+  \fbox{\fbox{\parbox{0.97\textwidth}{\centering
+  {\Large
+ \authorname~(\authornumber)  }}}
+ }
+\end{center}
+
+\begin{enumerate}
+\item[] \textbf{INSTRUCTIONS}
+
+\item Submission is only via Brightspace. Deadlines are strict.
+
+\item You must submit a PDF typeset in (La)\TeX\ using \textbf{this} template. Handwritten solutions will not be accepted.
+
+\item Seeking solutions from the internet, from any external resource, or from any other person is prohibited.
+
+\item Please note that the course lecturer reserves the right to ask the student submitting the assignment to explain the answers to any or all questions. If the student is unable to provide a satisfactory answer then that question may receive partial/no credit.
+
+\item Of course, university policies on plagiarism always apply. In particular, any suspected plagiarism will be reported to the Board of Examiners.
+\end{enumerate}
+\rule{6cm}{0.4pt}
+
+\bigskip
+\bigskip
+
+
+%%% WRITE YOUR ANSWERS IN THE solution ENVIRONMENTS BELOW
+
+\begin{questions}
+%----------------------------------------------------------------------
+\question \textbf{Programmable Clock} \qpoints{4}
+%----------------------------------------------------------------------
+
+A computer uses a programmable clock in square-wave mode. If a 500\,MHz crystal is used, what should be the value of the holding register to achieve a clock resolution of
+
+\begin{enumerate}[label=(\alph*)]
+ \item a millisecond (a clock tick once every millisecond)?
+ \begin{solution}
+ 1 millisecond is $\frac{1}{1000}$ second.
+ So the number of ticks is $500{,}000{,}000 / 1000 = 500{,}000$.
+ So the holding register value is $500{,}000$.
+ \end{solution}
+
+ \item 100 microseconds?
+ \begin{solution}
+ 100 microseconds is $\frac{1}{10{,}000}$ second.
+ So the number of ticks is $500{,}000{,}000 / 10{,}000 = 50{,}000$.
+ So the holding register value is $50{,}000$.
+ \end{solution}
+\end{enumerate}
+
+
+%----------------------------------------------------------------------
+\question \textbf{Journaling Filesystems} \qpoints{4}
+%----------------------------------------------------------------------
+
+In the discussion on journaling, it was shown that the disk can be recovered to a consistent state (a write either completes or does not take place at all) if a CPU crash occurs during a write. Does this property hold if the CPU crashes again during a recovery procedure. Explain your answer.
+
+\begin{solution}
+Yes, it still holds.
+If the CPU crashes during recovery, the system can run recovery again after reboot.
+This works because recovery is repeatable and safe to do many times.
+So a write is still either fully done or not done at all.
+\end{solution}
+
+
+%----------------------------------------------------------------------
+\question \textbf{RAID Levels} \qpoints{4}
+%----------------------------------------------------------------------
+
+Compare RAID level 0 through 5 with respect to read performance, write performance, space overhead, and reliability.
+
+\begin{solution}
+RAID 0 has very good read and write performance because data is split across disks.
+It has no space overhead, but reliability is very bad because one disk failure loses all data.
+
+RAID 1 has good read performance and write performance is about normal.
+It has high space overhead because data is copied on another disk.
+Its reliability is good because one disk can fail and data is still available.
+
+RAID 2 is not used much.
+It has good read and write performance, but it needs extra disks for error correction.
+So the space overhead is high.
+Its reliability is good.
+
+RAID 3 has good read performance for large data and good write performance for large writes.
+It uses one parity disk, so space overhead is moderate.
+Its reliability is good because one disk can fail and parity can rebuild the data.
+
+RAID 4 is similar to RAID 3, but data is split by blocks.
+Reads are good, but small writes are slower because the parity disk becomes a bottleneck.
+Its space overhead is moderate, and it can handle one disk failure.
+
+RAID 5 has good read performance and better write performance than RAID 4, because parity is spread across disks.
+Its space overhead is moderate, and it can also survive one disk failure.
+\end{solution}
+
+
+%----------------------------------------------------------------------
+\question \textbf{Interrupt Handling} \qpoints{4}
+%----------------------------------------------------------------------
+
+CPU architects know that operating system writers hate imprecise interrupts. One way to please the OS folks is for the CPU to stop issuing new instructions when an interrupt is signaled, but allow all the instructions currently being executed to finish, then force the interrupt. Does this approach have any disadvantages? Explain your answer.
+
+\begin{solution}
+Yes, it has a disadvantage.
+The CPU must wait until all current instructions finish.
+If some instructions take a long time, the interrupt is delayed.
+So the system becomes less responsive, especially for urgent interrupts.
+\end{solution}
+
+
+%----------------------------------------------------------------------
+\question \textbf{DMA Memory-to-Memory Copy} \qpoints{4}
+%----------------------------------------------------------------------
+
+One mode that some DMA controllers use is to have the device controller send the word to the DMA controller, which then issues a second bus request to write to memory. How can this mode be used to perform memory to memory copy? Discuss any advantage or disadvantage of using this method instead of using the CPU to perform memory to memory copy.
+
+\begin{solution}
+The DMA controller can read data from one memory area and then write it to another memory area.
+So it can copy a block of memory without the CPU moving each word itself.
+
+One advantage is that the CPU is free to do other work during the copy.
+This is useful for large memory copies.
+
+One disadvantage is that DMA still uses the bus, so it can slow down the CPU.
+Also, for small copies, the setup cost may be bigger than the benefit.
+\end{solution}
+
+\end{questions}
+
+\end{document}

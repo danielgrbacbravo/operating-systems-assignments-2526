@@ -1,0 +1,19 @@
+ Image      : imgs/4.img
+ Volume     : MULTI
+ FS type    : FAT16
+ Bytes/sec  : 512
+ Sec/cluster: 4  (2048 bytes/cluster)
+ FATs       : 2  (32 sectors each)
+ Root cap   : 512 entries
+ Total sec  : 32768
+ Clusters   : 8167
+
+/
+|-- [d----] DIR1/  (2026-03-11 16:42:14)
+|   \-- [----a] F1.TXT  size=8           (2026-03-11 16:42:14)
+|-- [d----] DIR2/  (2026-03-11 16:42:14)
+|   \-- [----a] F2.TXT  size=8           (2026-03-11 16:42:14)
+\-- [d----] DIR3/  (2026-03-11 16:42:14)
+    \-- [----a] F3.TXT  size=10          (2026-03-11 16:42:14)
+
+Total: 3 file(s),  26 byte(s)

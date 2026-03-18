@@ -44,7 +44,7 @@ All five exercises operate on a FAT16 **disk image** file (a flat binary file). 
 Each exercise builds on the previous one. You are expected to copy and reuse your implementations from earlier exercises. Upload a single `.c` file per exercise.
 
 > **Alert!**
-> Your output must exactly match the expected format. Themis compares your program’s `stdout` against reference output, so watch spacing, punctuation, and capitalisation.
+> Your output must exactly match the expected format. Themis compares your program’s `stdout` against reference output, so watch spacing, punctuation, and capitalization.
 
 > **Note.**
 > A test FAT16 image will be provided on Themis. You can also create your own test images using `mkfs.fat -F 16` from the `dosfstools` package. See the appendix for instructions.
@@ -57,7 +57,7 @@ Before diving into the exercises, let us build up a mental model of how FAT16 wo
 
 At the hardware level, every storage device (hard disk, SSD, USB stick, SD card) exposes a flat sequence of bytes, numbered from 0 up to the device’s capacity. The device itself has no concept of files, folders, or names. All of that structure is imposed by the **filesystem**: a set of conventions about which byte ranges mean what.
 
-In this assignment you will work with a **disk image**: a regular file on your own computer that is that flat byte sequence. If the image is 32 MB, then byte 0 of the file corresponds to byte 0 of the (virtual) disk, byte 1 to byte 1, and so on. You can open it with `fopen()`, seek to any offset, and read or write any byte.
+In this assignment you will work with a **disk image**: a regular file on your own computer that is that flat byte sequence. If the image is 32 megabytes, then byte 0 of the file corresponds to byte 0 of the (virtual) disk, byte 1 to byte 1, and so on. You can open it with `fopen()`, seek to any offset, and read or write any byte.
 
 **FAT16 Disk Layout**
 
@@ -69,7 +69,7 @@ A FAT16-formatted disk is divided into four regions, laid out sequentially one a
 
 Let us walk through each region:
 
-1. **Boot Sector / BPB** (byte offset 0). The very first bytes of the disk contain the *BIOS Parameter Block* (BPB), a small header that describes everything you need to know about the disk’s geometry: how big a sector is, how many sectors make up a cluster, where the FAT lives, how large the root directory is, and so on. Think of it as the “table of contents” for the entire filesystem. It is stored as a tightly packed structure, and in Exercise 1 you will read it in one shot with `fread()`.
+1. **Boot Sector / BPB** (byte offset 0). The first bytes of the disk contain the *BIOS Parameter Block* (BPB). This header describes the disk’s geometry: sector size, sectors per cluster, FAT location, and root directory size. It is stored as a tightly packed structure; in Exercise 1, you will read it with `fread()`.
 2. **FAT Region** (starts at `fat_start`). The *File Allocation Table* is the heart of FAT16. It is a flat array of 16-bit integers, with one entry per cluster on the disk. Each entry tells you what comes *next* in a file’s chain of clusters:
     * `0x0000` - the cluster is free (nobody is using it).
     * `0x0002`-`0xFFEF` - the next cluster number in the chain.
@@ -77,7 +77,7 @@ Let us walk through each region:
     * `0xFFF8`-`0xFFFF` - end of chain (this is the file’s last cluster).
     Entries 0 and 1 are reserved; data clusters start at index 2. The disk usually stores two identical copies of the FAT for redundancy (the BPB field `num_fats` tells you how many).
 3. **Root Directory** (starts at `root_start`). A fixed-size array of 32-byte *directory entries*. Each entry records a file’s name (in 8.3 format), its attributes, timestamps, the number of its first cluster, and its size in bytes. The maximum number of entries in the root is given by `root_entry_count` in the BPB (commonly 512).
-4. **Data Region** (starts at `data_start`). The actual file and subdirectory contents, organised in *clusters*. A cluster is a group of consecutive sectors (for example, 4 sectors × 512 bytes = 2048 bytes per cluster). Clusters are numbered starting from 2, so cluster *C* lives at byte offset:
+4. **Data Region** (starts at `data_start`). The actual file and subdirectory contents, organized in *clusters*. A cluster is a group of consecutive sectors (for example, 4 sectors × 512 bytes = 2048 bytes per cluster). Clusters are numbered starting from 2, so cluster *C* lives at byte offset:
     `data_start + (C - 2) * cluster_size`
 
 **How files are stored: cluster chains**
@@ -96,9 +96,9 @@ The file occupies clusters 5 → 8 → 12, in that order. Here is what the relev
 
 | [0] | [1] | [2] | [3] | [4] | [5] | [6] | [7] | [8] | [9] | [10] | [11] | [12] |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| -- | -- | 0000 | 0000 | 0000 | **0008** | 0000 | 0000 | **000C** | 0000 | 0000 | 0000 | **FFF8** |
+| – | – | 0000 | 0000 | 0000 | **0008** | 0000 | 0000 | **000C** | 0000 | 0000 | 0000 | **FFF8** |
 
-Entries 0 and 1 (grey) are reserved. The highlighted entries form the file’s cluster chain: cluster 5 points to 8, cluster 8 points to 12, and cluster 12 holds the end-of-chain marker (FFF8). Every other entry is zero (free).
+Entries 0 and 1 (gray) are reserved. The highlighted entries form the file’s cluster chain: cluster 5 points to 8, cluster 8 points to 12, and cluster 12 holds the end-of-chain marker (FFF8). Every other entry is zero (free).
 
 **Key Offset Formulas**
 
@@ -144,7 +144,7 @@ Let us pick out a few BPB fields from this dump:
 | 0x36 | `46 41 54 31 36 20 20 20` | `fs_type[8]` | "FAT16 " |
 
 > **Note.**
-> FAT16 stores multi-byte integers in little-endian byte order. That means the least-significant byte comes first. For example, the hex bytes `00 02` at offset `0x0B` represent the 16-bit value `0x0200` = 512, not `0x0002` = 2. On x86 and ARM (which are both little-endian), C reads these correctly without any special conversion.
+> FAT16 stores multibyte integers in little-endian byte order. That means the least-significant byte comes first. For example, the hex bytes `00 02` at offset `0x0B` represent the 16-bit value `0x0200` = 512, not `0x0002` = 2. On x86 and ARM (which are both little-endian), C reads these correctly without any special conversion.
 
 > **Note.**
 > Get in the habit of hex-dumping your images whenever something looks wrong. You can dump a specific region like this:
@@ -190,7 +190,7 @@ Here is what happens in memory. The raw bytes from the disk land directly in the
 
 `bps` = `bytes_per_sector`, `spc` = `sectors_per_clus`, `rsv` = `reserved_sectors`, `nfats` = `num_fats`
 
-After the `fread()`, `bpb.bytes_per_sector` contains the two bytes at offsets 11-12 (`00 02`), interpreted as a 16-bit little-endian integer: 512. `bpb.sectors_per_clus` is the single byte at offset 13 (`04`): 4. And so on.
+After the `fread()`, `bpb.bytes_per_sector` contains the two bytes at offsets 11–12 (`00 02`), interpreted as a 16-bit little-endian integer: 512. `bpb.sectors_per_clus` is the single byte at offset 13 (`04`): 4. And so on.
 
 The same trick works for directory entries: each `DirEntry` is exactly 32 bytes on disk, and the packed struct maps each field to the right offset.
 
@@ -199,11 +199,11 @@ The same trick works for directory entries: each `DirEntry` is exactly 32 bytes 
 FAT16 stores file names as 8 bytes (name, space-padded) followed by 3 bytes (extension, space-padded), with no dot on disk. For example, the file HELLO.TXT is stored as:
 `H E L L O _ _ _ T X T` (where `_` is space)
 
-When displaying the name, strip trailing spaces and insert a dot between the name and extension (if the extension is non-empty): `HELLO.TXT`, `MAKEFILE`, `README.MD`.
+When displaying the name, strip trailing spaces and insert a dot between the name and extension (if the extension is nonempty): `HELLO.TXT`, `MAKEFILE`, `README.MD`.
 
 **Directory Entry Attributes**
 
-The `attr` byte in each directory entry is a bitmask. Several bits can be set at once:
+The `attr` byte in each directory entry is a bit mask. Several bits can be set at once:
 
 | Flag | Value | Meaning |
 | :--- | :--- | :--- |
@@ -221,9 +221,7 @@ Skip entries where `attr` has all four low bits set (`0x0F` - long-filename frag
 
 Dates and times are packed into 16-bit integers:
 * **Date:** bits [15:9] = year − 1980, bits [8:5] = month (1-12), bits [4:0] = day (1-31).
-* **Time:** bits [15:11] = hour (0-23), bits [10:5] = minute (0-59), bits [4:0] = seconds÷2 (0-29).
-
-#### 1.3 Exercise 1: Volume Inspector
+* **Time:** bits [15:11] = hour (0-23), bits [10:5] = minute (0-59), bits [4:0] = seconds÷2 (0-29).#### 1.3 Exercise 1: Volume Inspector
 
 **Task**
 

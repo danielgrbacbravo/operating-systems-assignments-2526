@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "base_url": "https://themis.housing.rug.nl",
+  "linked_root_url": "https://themis.housing.rug.nl/course/2025-2026/os",
+  "linked_root_node_id": "url:e51a8c8fa915b6e24cc85d4b992b1962b81b6170c294bfae64e516e416eb3145",
+  "last_download_dir": ".",
+  "recent_asset_choices": {
+    "url:25fe4a908d1a516ee8235ab20aa71a2c2eea20f85945a9ed544ec0b1d17cf2b7": [
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/fat16_types.h",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/helpers.h",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/helpers.c",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/imgs/1.img",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/imgs/2.img",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/imgs/3.img",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/imgs/4.img",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/imgs/5.img",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/imgs/6.img",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/imgs/7.img",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/imgs/8.img",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/imgs/9.img",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40files/imgs/10.img",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/1.in",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/1.out",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/2.in",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/2.out",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/3.in",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/3.out",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/4.in",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/4.out",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/5.in",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/5.out",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/6.in",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/6.out",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/7.in",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/7.out",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/8.in",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/8.out",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/9.in",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/9.out",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/10.in",
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/5_file_writer/%40tests/10.out",
+      "https://themis.housing.rug.nl/about",
+      "https://www.rug.nl/info/privacy"
+    ],
+    "url:c37fc1cd5c9fefede587e5f10f24edb419a4ddb76cb65de839adf87d86bcee96": [
+      "https://themis.housing.rug.nl/file/2025-2026/os/lab5/%40files/Assignment5.pdf"
+    ]
+  },
+  "preferences": {
+    "default_refresh_depth": 1,
+    "auto_refresh_on_open": false,
+    "show_stale_warning_after_minutes": 120
+  },
+  "updated_at": "2026-03-18T14:55:36.160904Z"
+}
