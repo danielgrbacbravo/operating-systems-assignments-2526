@@ -1,0 +1,162 @@
+%%%%
+\documentclass[10pt,answers]{exam}
+\usepackage{times}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tikz}
+
+% Code listing style
+\lstdefinestyle{codestyle}{
+    language=C,
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{gray!10},
+    keywordstyle=\bfseries\color{blue!70!black},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{purple!80!black},
+    tabsize=4,
+    keepspaces=true,
+    showstringspaces=false,
+    frame=lines,
+    breaklines=true,
+}
+
+%Feel free to add packages and newcommands here if you wish
+
+%%%%
+% IMPORTANT: YOU MUST FILL IN THE FOLLOWING THREE COMMANDS WITH YOUR OWN DETAILS
+\newcommand{\authorname}{Daniel Grbac Bravo}       %%% Write your first and last name
+\newcommand{\authornumber}{S5482585}      %%% Write your student number
+\newcommand{\assignmentnumber}{6}        %%% Do change
+%%%%
+
+%%%% DO NOT MODIFY
+
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader{Operating Systems ()}{{\textbf{Assignment~\assignmentnumber} -- Theoretical} \\ \today}{}
+\runningheader{Individual solutions by \authorname~(\authornumber)}
+              {}
+              {Page \thepage\ of \numpages}
+\firstpagefooter{}{}{}
+\runningfooter{}{}{}
+\newcommand{\qpoints}[1]{\hfill \textbf{(#1 points)}}
+
+\begin{document}
+ \boxedpoints
+\begin{center}
+  \fbox{\fbox{\parbox{0.97\textwidth}{\centering
+  {\Large
+ \authorname~(\authornumber)  }}}
+ }
+\end{center}
+
+\begin{enumerate}
+\item[] \textbf{INSTRUCTIONS}
+
+\item Submission is only via Brightspace. Deadlines are strict.
+
+\item You must submit a PDF typeset in (La)\TeX\ using \textbf{this} template. Handwritten solutions will not be accepted.
+
+\item Seeking solutions from the internet, from any external resource, or from any other person is prohibited.
+
+\item Please note that the course lecturer reserves the right to ask the student submitting the assignment to explain the answers to any or all questions. If the student is unable to provide a satisfactory answer then that question may receive partial/no credit.
+
+\item Of course, university policies on plagiarism always apply. In particular, any suspected plagiarism will be reported to the Board of Examiners.
+\end{enumerate}
+\rule{6cm}{0.4pt}
+
+\bigskip
+\bigskip
+
+
+%%% WRITE YOUR ANSWERS IN THE solution ENVIRONMENTS BELOW
+
+\begin{questions}
+
+%----------------------------------------------------------------------
+\question \textbf{Deadlock vs.\ Safe States} \qpoints{6}
+%----------------------------------------------------------------------
+
+Can a system be in a state that is \textit{neither} deadlocked \textit{nor} safe?
+If so, give a concrete example.  If not, prove that every state is either deadlocked or safe.
+
+\begin{solution}
+% Write your answer here
+\end{solution}
+
+
+%----------------------------------------------------------------------
+\question \textbf{Multi-Unit Resource Deadlock} \qpoints{6}
+%----------------------------------------------------------------------
+
+Is it possible for a resource deadlock to involve multiple units of one resource type and a single unit of another?
+If so, give a concrete example showing the processes, resources, current allocations, and outstanding requests.  If not, explain why.
+
+\begin{solution}
+% Write your answer here
+\end{solution}
+
+
+%----------------------------------------------------------------------
+\question \textbf{Full Virtualisation vs.\ Paravirtualisation} \qpoints{6}
+%----------------------------------------------------------------------
+
+\begin{enumerate}[label=(\alph*)]
+  \item (3 points) Explain the difference between full virtualisation and paravirtualisation. Address how each handles privileged instructions, whether the guest OS needs modification, and give a concrete example.
+
+    \begin{solution}
+    % Write your answer here
+    \end{solution}
+
+  \item (3 points) Which of the two is harder to implement? Justify with at least two technical challenges.
+
+    \begin{solution}
+    % Write your answer here
+    \end{solution}
+\end{enumerate}
+
+
+%----------------------------------------------------------------------
+\question \textbf{Type 1 vs.\ Type 2 Hypervisors} \qpoints{6}
+%----------------------------------------------------------------------
+
+Type~1 hypervisors can do everything Type~2 hypervisors can, and are generally more efficient.
+So why do Type~2 hypervisors exist at all?
+Give at least three concrete reasons why a user or organisation might prefer a Type~2 hypervisor despite its lower efficiency.
+
+\begin{solution}
+% Write your answer here
+\end{solution}
+
+
+%----------------------------------------------------------------------
+\question \textbf{Key Establishment with a Trusted Third Party} \qpoints{6}
+%----------------------------------------------------------------------
+
+Suppose Alice and Bob have never met, but there exists a trusted third party, Trent, who shares a secret key $K_{AT}$ with Alice and a different secret key $K_{BT}$ with Bob.
+Describe a protocol by which Alice and Bob can establish a new shared session key $K_S$ using only symmetric cryptography and the help of Trent.
+
+Your protocol should:
+\begin{enumerate}[nosep]
+    \item Number each message.
+    \item State the sender, receiver, and contents.
+    \item Explain why an eavesdropper cannot recover $K_S$.
+\end{enumerate}
+
+\begin{solution}
+% Write your answer here
+\end{solution}
+
+
+\end{questions}
+\end{document}

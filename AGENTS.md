@@ -54,15 +54,15 @@ Examples:
 - `current_line_length` instead of `len`.
 - `number_of_students` instead of `n`.
 - `is_input_valid` instead of `ok`.
-
 ### Implementation Style
 
-- Prefer the **simplest correct solution**.
+- Prefer the **simplest correct solution** that works for the assignment.
 - Keep control flow direct and explicit.
 - Do not compress logic into clever one-liners.
 - Avoid premature generalization and abstraction.
 - Use small functions with clear responsibilities.
 - Write portable C99; avoid compiler-specific tricks.
+- Skip unnecessary defensive checks when the assignment assumes valid input (for example, you may omit `malloc` NULL checks), but still clean up resources properly (for example, always `free` allocated memory).
 
 ## Repository Layout
 
@@ -94,7 +94,7 @@ Examples:
 
 ```sh
 # Compile
-orb gcc -O2 -std=c99 -pedantic -Wall -o a.out *.c -lm
+orb gcc -g -std=c99 -pedantic -Wall -o a.out *.c -lm
 
 # Run one test manually (stdin)
 orb sh -c './a.out < tests/1.in'
